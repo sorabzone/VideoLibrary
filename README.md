@@ -23,9 +23,11 @@ Also just like any realworld API these may be flakey at times
 
 # Solution Structure
 
-VideoLibrary
+# VideoLibrary
 
 It is .Net Core MVC + React/Redux project created on top of Visual Studio boiler plate template. Not much changed in the defaukt template except the page to display movies list.
+
+	CI/CD pipeline is also created and integrated to AppVeyor(OpenSource), to build and execute unit tests.
 
 App will always receive response in an standard format from API. If Code is 200 then the result is expected otherwise failed or exception.
 
@@ -34,18 +36,15 @@ App will always receive response in an standard format from API. If Code is 200 
 				public StatusCode Code { get; set; }
 				public string Message { get; set; }
 				public TData Data { get; set; }
-			}
+			}	
 
 
-		CI/CD pipeline is also created and integrated to AppVeyor(OpenSource), to build and execute unit tests.
-
-
-VideoLibrary.Logger
+# VideoLibrary.Logger
 
 It is a common logger created using NLog. By default application is configured to write logs in text file.
 
 
-VideoLibrary.Engine
+# VideoLibrary.Engine
 
 All business logic is written in this project.
 
@@ -56,10 +55,10 @@ All business logic is written in this project.
 5. If there is an invalid response from webjetAPI, then the response is null and is handled accordingly
 6. API are called in parallel to fetch and combine results.
 
-# Note: HttpClient is configured to timeout in 3 seconds for this test application. If there is no response from WebjetAPI, then request will timeout after 3 seconds
+		Note: HttpClient is configured to timeout in 3 seconds for this test application. If there is no response from WebjetAPI, then request will timeout after 3 seconds
 
 
-VideoLibrary.UnitTest
+# VideoLibrary.UnitTest
 
 Unit tests are created using NUnit and executed in CI pipeline.
 
