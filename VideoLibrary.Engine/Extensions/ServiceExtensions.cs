@@ -22,7 +22,6 @@ namespace VideoLibrary.Engine.Extensions
                 {
                     if (!response.IsSuccessStatusCode) return default(O);
 
-                    var result = response.Content.ReadAsStringAsync();
                     return await response.Content.ReadAsAsync<O>();
                 }
             }
